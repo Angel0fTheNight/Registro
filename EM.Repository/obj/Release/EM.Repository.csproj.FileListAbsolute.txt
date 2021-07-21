@@ -1,0 +1,15 @@
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\bin\Release\EM.Repository.dll.config
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\bin\Release\EM.Repository.dll
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\bin\Release\EM.Repository.pdb
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\bin\Release\EM.Domain.dll
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\bin\Release\FirebirdSql.Data.FirebirdClient.dll
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\bin\Release\System.Threading.Tasks.Extensions.dll
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\bin\Release\EM.Domain.pdb
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\bin\Release\System.Threading.Tasks.Extensions.xml
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\obj\Release\EM.Repository.csproj.AssemblyReference.cache
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\obj\Release\EM.Repository.csproj.CoreCompileInputs.cache
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\obj\Release\EM.Repository.csproj.CopyComplete
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\obj\Release\EM.Repository.dll
+C:\Users\Escolar Manager\source\repos\Registro\EM.Repository\obj\Release\EM.Repository.pdb

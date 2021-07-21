@@ -1,0 +1,16 @@
+C:\Users\Escolar Manager\source\repos\Registro\Registro\bin\Debug\Registro.exe.config
+C:\Users\Escolar Manager\source\repos\Registro\Registro\bin\Debug\Registro.exe
+C:\Users\Escolar Manager\source\repos\Registro\Registro\bin\Debug\Registro.pdb
+C:\Users\Escolar Manager\source\repos\Registro\Registro\obj\Debug\Registro.csproj.AssemblyReference.cache
+C:\Users\Escolar Manager\source\repos\Registro\Registro\obj\Debug\Registro.Form1.resources
+C:\Users\Escolar Manager\source\repos\Registro\Registro\obj\Debug\Registro.Properties.Resources.resources
+C:\Users\Escolar Manager\source\repos\Registro\Registro\obj\Debug\Registro.csproj.GenerateResource.cache
+C:\Users\Escolar Manager\source\repos\Registro\Registro\obj\Debug\Registro.csproj.CoreCompileInputs.cache
+C:\Users\Escolar Manager\source\repos\Registro\Registro\obj\Debug\Registro.exe
+C:\Users\Escolar Manager\source\repos\Registro\Registro\obj\Debug\Registro.pdb
+C:\Users\Escolar Manager\source\repos\Registro\Registro\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
+C:\Users\Escolar Manager\source\repos\Registro\Registro\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Escolar Manager\source\repos\Registro\Registro\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Escolar Manager\source\repos\Registro\Registro\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Escolar Manager\source\repos\Registro\Registro\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Escolar Manager\source\repos\Registro\Registro\obj\Debug\Registro.csproj.CopyComplete

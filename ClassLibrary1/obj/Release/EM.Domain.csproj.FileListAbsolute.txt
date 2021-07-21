@@ -1,0 +1,11 @@
+C:\Users\Escolar Manager\source\repos\Registro\ClassLibrary1\bin\Release\EM.Domain.dll
+C:\Users\Escolar Manager\source\repos\Registro\ClassLibrary1\bin\Release\EM.Domain.pdb
+C:\Users\Escolar Manager\source\repos\Registro\ClassLibrary1\bin\Release\FirebirdSql.Data.FirebirdClient.dll
+C:\Users\Escolar Manager\source\repos\Registro\ClassLibrary1\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Escolar Manager\source\repos\Registro\ClassLibrary1\bin\Release\System.Threading.Tasks.Extensions.dll
+C:\Users\Escolar Manager\source\repos\Registro\ClassLibrary1\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Escolar Manager\source\repos\Registro\ClassLibrary1\bin\Release\System.Threading.Tasks.Extensions.xml
+C:\Users\Escolar Manager\source\repos\Registro\ClassLibrary1\obj\Release\EM.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Escolar Manager\source\repos\Registro\ClassLibrary1\obj\Release\EM.Domain.csproj.CopyComplete
+C:\Users\Escolar Manager\source\repos\Registro\ClassLibrary1\obj\Release\EM.Domain.dll
+C:\Users\Escolar Manager\source\repos\Registro\ClassLibrary1\obj\Release\EM.Domain.pdb

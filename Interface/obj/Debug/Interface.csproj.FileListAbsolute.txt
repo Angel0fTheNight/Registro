@@ -1,0 +1,10 @@
+C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\Interface.exe.config
+C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\Interface.exe
+C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\Interface.pdb
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.csproj.AssemblyReference.cache
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.Form1.resources
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.Properties.Resources.resources
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.csproj.GenerateResource.cache
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.exe
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.pdb
