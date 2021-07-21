@@ -34,8 +34,8 @@ namespace Interface
             maskedTBNascimento.Text = Convert.ToString(alun.Nascimento);
             comboBSexo.SelectedIndex = (int)alun.Sexo;
         }
-        BindingSource bs = new BindingSource();
-        public void limpar()
+        private BindingSource bs = new BindingSource();
+        public void Limpar()
         {
             textBCpf.Text = string.Empty;
             textBMatricula.Text = string.Empty;
@@ -43,6 +43,7 @@ namespace Interface
             maskedTBNascimento.Text = string.Empty;
             comboBSexo.SelectedIndex = -1;
             textBPesquisa.Text = string.Empty;
+            dataGridAluno.ClearSelection();
         }
         public Form1()
         {
@@ -79,8 +80,8 @@ namespace Interface
                 {
                     MessageBox.Show("O campo Matricula esta vazio! O campo Matricula é um campo obrigatorio!", "Erro");
                     return;
-                }                               
-            }            
+                }
+            }
             if (validacao.CampoVazio(maskedTBNascimento.Text) || !maskedTBNascimento.MaskCompleted)
             {
                 MessageBox.Show("O campo Nascimento esta vazio ou incompleto! O campo Nascimento é um campo obrigatorio!", "Erro");
@@ -99,31 +100,21 @@ namespace Interface
                 MessageBox.Show("Data Invalida", "Erro");
                 return;
             }
-            
             Aluno aluno = new Aluno();
             if (buttonAdicionar.Text != "Modificar")
-            {              
+            {
                 aluno.Matricula = Convert.ToInt32(textBMatricula.Text);
                 aluno.Nome = textBNome.Text.Trim();
                 aluno.Cpf = textBCpf.Text;
                 aluno.Nascimento = Convert.ToDateTime(maskedTBNascimento.Text);
                 aluno.Sexo = (EnumeradorSexo)comboBSexo.SelectedIndex;
-                if (aluno.Matricula == 0 || textBMatricula.Text.Contains("-"))
-                {
-                    MessageBox.Show("Número de matricula invalido!\nA matricula deve ser positiva e diferente de 0", "Erro");
-                    return;
-                }
-                if (dadosaluno.MatriculaExistente(Convert.ToInt32(textBMatricula.Text)))
-                {
-                    MessageBox.Show("Número de matricula ja cadastrado!", "Erro");
-                    return;
-                }
+
                 try
                 {
                     dadosaluno.Add(aluno);
                     preencheGrid();
                     MessageBox.Show("Aluno inserido com sucesso !", "Sucesso", MessageBoxButtons.OK);
-                    limpar();                    
+                    Limpar();
                 }
                 catch (Exception)
                 {
@@ -139,12 +130,14 @@ namespace Interface
                 alun.Nascimento = Convert.ToDateTime(maskedTBNascimento.Text);
                 alun.Sexo = (EnumeradorSexo)comboBSexo.SelectedIndex;
 
+
+
                 try
                 {
                     dadosaluno.AtualizeOsAlunos(alun);
                     preencheGrid();
                     MessageBox.Show("Aluno modificado com sucesso!", "Sucesso", MessageBoxButtons.OK);
-                    limpar();
+                    Limpar();
                 }
                 catch (Exception)
                 {
@@ -159,7 +152,7 @@ namespace Interface
         }
         private void buttonLimpar_Click(object sender, EventArgs e)
         {
-            limpar();
+            Limpar();
 
             if (buttonLimpar.Text == "Cancelar")
             {
@@ -169,7 +162,7 @@ namespace Interface
                 groupBCadEditAluno.Text = "Novo aluno";
                 buttonExcluir.Enabled = false;
                 textBMatricula.Enabled = true;
-            }            
+            }
         }
         private void buttonPesquisar_Click(object sender, EventArgs e)
         {
@@ -177,7 +170,7 @@ namespace Interface
             string resultado = textBPesquisa.Text;
 
             if (int.TryParse(resultado, out int matricula))
-            {                
+            {
                 try
                 {
                     bs.DataSource = repositorioAluno.BusqueAlunosPorMatricula(matricula);
@@ -210,6 +203,7 @@ namespace Interface
             groupBCadEditAluno.Text = "Editando aluno";
             buttonExcluir.Enabled = true;
             textBMatricula.Enabled = false;
+            dataGridAluno.ClearSelection();
         }
         private void buttonExcluir_Click(object sender, EventArgs e)
         {
@@ -225,7 +219,7 @@ namespace Interface
                         dadosAlunos.RemovaOsAlunos(aluno);
                         preencheGrid();
                         MessageBox.Show("Aluno excluído com sucesso !", "Alterar", MessageBoxButtons.OK);
-                        limpar();
+                        Limpar();
                         buttonAdicionar.Text = "Adicionar";
                         buttonLimpar.Text = "Limpar";
                         groupBCadEditAluno.Text = "Novo aluno";
@@ -247,17 +241,16 @@ namespace Interface
         {
             e.Handled = (!char.IsDigit(e.KeyChar) && e.KeyChar != 08);
         }
-
         private void textBCpf_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = (!char.IsDigit(e.KeyChar) && e.KeyChar != 08);
-        }        
+        }
         private void dataGridAluno_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             RepositorioAluno dadosAlunos = new RepositorioAluno();
             if (e.RowIndex == -1)
             {
-                return;               
+                return;
             }
             else
             {
@@ -284,7 +277,7 @@ namespace Interface
             {
                 e.Handled = true;
             }
-        }      
+        }
         private void textBPesquisa_TextChanged(object sender, EventArgs e)
         {
             if (textBPesquisa.Text == "")
@@ -293,11 +286,9 @@ namespace Interface
                 textBMatricula.Enabled = true;
             }
         }
-
         private void dataGridAluno_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {          
-            int numeroColunaCPF = 4;
-            if (e.ColumnIndex == numeroColunaCPF && e.Value != string.Empty)
+        {
+            if (e.ColumnIndex == 4 && e.Value != string.Empty)
             {
                 string cpf = e.Value.ToString();
 
@@ -308,7 +299,25 @@ namespace Interface
                                     cpf.Substring(9, 2));
                 e.Value = cpf;
                 e.FormattingApplied = true;
-            }           
+            }
+        }
+        private void textBMatricula_Leave(object sender, EventArgs e)
+        {
+            RepositorioAluno repositorioAluno = new RepositorioAluno();
+            if (textBMatricula.Text != string.Empty)
+            {
+                int matricula = Convert.ToInt32(textBMatricula.Text);
+                if (matricula == 0 || textBMatricula.Text.Contains("-"))
+                {
+                    MessageBox.Show("Número de matricula invalido!\nA matricula deve ser positiva e diferente de 0", "Erro");
+                    textBMatricula.Clear();
+                }
+                if (repositorioAluno.MatriculaExistente(matricula))
+                {
+                    MessageBox.Show("Número de matricula ja cadastrado!", "Erro");
+                    textBMatricula.Clear();
+                }
+            }
         }
     }
 }

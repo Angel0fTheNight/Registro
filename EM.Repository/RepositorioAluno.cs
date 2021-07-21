@@ -19,14 +19,11 @@ namespace EM.Repository
        }
         public bool MatriculaExistente(int matricula)
         {
-            try
+            if(BusqueAlunosPorMatricula(matricula) != null)
             {
-                return Get(aluno => aluno.Matricula == matricula).First() != null;
-            }
-            catch
-            {
-                return false;
-            }
+                return true;
+            }           
+            return false;                                
         }
         public override void Add(Aluno aluno)
         {

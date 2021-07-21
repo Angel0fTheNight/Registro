@@ -160,6 +160,7 @@ namespace Interface
             this.textBMatricula.TabIndex = 1;
             this.textBMatricula.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBMatricula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBMatricula_KeyPress);
+            this.textBMatricula.Leave += new System.EventHandler(this.textBMatricula_Leave);
             // 
             // label5
             // 

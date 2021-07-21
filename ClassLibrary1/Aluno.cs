@@ -10,7 +10,6 @@ namespace EM.Domain
         public string Cpf { get; set; }
         public DateTime Nascimento { get; set; }
         public EnumeradorSexo Sexo { get; set; }
-
         public override string ToString()
         {
             return Nascimento.ToString("MM/dd/yyyy");
@@ -24,7 +23,6 @@ namespace EM.Domain
                    Nascimento == aluno.Nascimento &&
                    Sexo == aluno.Sexo;
         }
-
         public override int GetHashCode()
         {
             int hashCode = -1709539627;

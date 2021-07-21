@@ -28,7 +28,7 @@ namespace EM.Domain
                 for (int i = 0; i < 9; i++)
                     soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return false;
             }

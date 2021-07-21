@@ -12,17 +12,14 @@ namespace EM.Repository
         {
 
         }
-
         public virtual void RemovaOsAlunos(T objeto)
         {
 
         }
-
         public virtual void AtualizeOsAlunos(T objeto)
         {
 
         }
-
         public virtual IEnumerable<T> BusqueTodosOsAlunos()
         {
             return null;
