@@ -21,7 +21,7 @@ namespace EM.Repository.Testes
             aluno.Nascimento = Convert.ToDateTime("11-11-2000");
             aluno.Sexo = (EnumeradorSexo)0;
 
-            repositorioAluno.Add(aluno);
+            repositorioAluno.AdicioneNovoAluno(aluno);
 
             Assert.AreEqual(aluno, repositorioAluno.BusqueAlunosPorMatricula(200));         
         }
@@ -33,7 +33,7 @@ namespace EM.Repository.Testes
 
             alunoUpdate.Cpf = "52371855251";
 
-            repositorioAluno.AtualizeOsAlunos(alunoUpdate);
+            repositorioAluno.AtualizeAluno(alunoUpdate);
             Assert.AreEqual(alunoUpdate, repositorioAluno.BusqueAlunosPorMatricula(200));
         }
         [TestMethod]
@@ -42,7 +42,7 @@ namespace EM.Repository.Testes
             Aluno alunoRemove = new Aluno();
             alunoRemove = repositorioAluno.BusqueAlunosPorMatricula(200);
 
-            repositorioAluno.RemovaOsAlunos(alunoRemove);
+            repositorioAluno.RemovaAluno(alunoRemove);
 
             Assert.IsNotNull(alunoRemove);
         }

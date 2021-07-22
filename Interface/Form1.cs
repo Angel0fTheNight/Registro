@@ -10,15 +10,15 @@ namespace Interface
     {
         private void Form1_Load(object sender, EventArgs e)
         {
-            preencheGrid();
+            PreencheGrid();
         }
-        private void preencheGrid()
+        private void PreencheGrid()
         {
             try
             {
                 RepositorioAluno dadosAlunos = new RepositorioAluno();
-                bs.DataSource = dadosAlunos.BusqueTodosOsAlunos();
-                dataGridAluno.DataSource = bs;
+                bindingSource.DataSource = dadosAlunos.BusqueTodosOsAlunos();
+                dataGridAluno.DataSource = bindingSource;
                 dataGridAluno.ClearSelection();
             }
             catch (Exception ex)
@@ -26,7 +26,7 @@ namespace Interface
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK);
             }
         }
-        private void preencheDados(Aluno alun)
+        private void PreencheDados(Aluno alun)
         {
             textBMatricula.Text = alun.Matricula.ToString();
             textBNome.Text = alun.Nome;
@@ -34,8 +34,8 @@ namespace Interface
             maskedTBNascimento.Text = Convert.ToString(alun.Nascimento);
             comboBSexo.SelectedIndex = (int)alun.Sexo;
         }
-        private BindingSource bs = new BindingSource();
-        public void Limpar()
+        private BindingSource bindingSource = new BindingSource();
+        public void LimpeOsCampos()
         {
             textBCpf.Text = string.Empty;
             textBMatricula.Text = string.Empty;
@@ -45,6 +45,14 @@ namespace Interface
             textBPesquisa.Text = string.Empty;
             dataGridAluno.ClearSelection();
         }
+        public void VolteDeEdicaoParaCadastro()
+        {
+            buttonAdicionar.Text = "Adicionar";
+            buttonLimpar.Text = "Limpar";
+            groupBCadEditAluno.Text = "Novo aluno";
+            buttonExcluir.Enabled = false;
+            textBMatricula.Enabled = true;
+        }
         public Form1()
         {
             InitializeComponent();
@@ -52,69 +60,59 @@ namespace Interface
         }
         private void buttonAdicionar_Click(object sender, EventArgs e)
         {
-            ValidacaoDeCampos validacao = new ValidacaoDeCampos();
-            RepositorioAluno dadosaluno = new RepositorioAluno();
-            if (validacao.CampoVazio(textBNome.Text.Trim()))
+            ValidacaoDeCampos validacaoDeCampoVazio = new ValidacaoDeCampos();
+            if (validacaoDeCampoVazio.CampoVazio(textBNome.Text.Trim()))
             {
                 MessageBox.Show("O campo Nome esta vazio! O campo Nome é um campo obrigatorio!", "Erro");
                 textBNome.Clear();
                 return;
             }
-
-            if (!ValidarCpf.IsCpf(textBCpf.Text) && textBCpf.Text != string.Empty)
+            if (validacaoDeCampoVazio.CampoVazio(textBMatricula.Text))
             {
-                MessageBox.Show("CPF invalido", "Erro");
+                MessageBox.Show("O campo Matricula esta vazio! O campo Matricula é um campo obrigatorio!", "Erro");
                 return;
             }
-            try
-            {
-                if (dadosaluno.CpfExistente(textBCpf.Text, Convert.ToInt32(textBMatricula.Text)) && textBCpf.Text != string.Empty)
-                {
-                    MessageBox.Show("CPF ja cadastrado!!", "Erro");
-                    return;
-                }
-            }
-            catch
-            {
-                if (validacao.CampoVazio(textBMatricula.Text))
-                {
-                    MessageBox.Show("O campo Matricula esta vazio! O campo Matricula é um campo obrigatorio!", "Erro");
-                    return;
-                }
-            }
-            if (validacao.CampoVazio(maskedTBNascimento.Text) || !maskedTBNascimento.MaskCompleted)
+            if (validacaoDeCampoVazio.CampoVazio(maskedTBNascimento.Text) || !maskedTBNascimento.MaskCompleted)
             {
                 MessageBox.Show("O campo Nascimento esta vazio ou incompleto! O campo Nascimento é um campo obrigatorio!", "Erro");
                 return;
             }
-
             if (comboBSexo.SelectedIndex != 0 && comboBSexo.SelectedIndex != 1)
             {
                 MessageBox.Show("O campo Sexo não foi selecionado! O campo Sexo é um campo obrigatorio!", "Erro");
                 return;
             }
-            DateTime dataValida;
             DateTime dataHoje = DateTime.Today;
-            if (!DateTime.TryParse(maskedTBNascimento.Text, out dataValida) || dataHoje <= Convert.ToDateTime(maskedTBNascimento.Text))
+            if (!DateTime.TryParse(maskedTBNascimento.Text, out _) || dataHoje <= Convert.ToDateTime(maskedTBNascimento.Text))
             {
                 MessageBox.Show("Data Invalida", "Erro");
                 return;
             }
-            Aluno aluno = new Aluno();
-            if (buttonAdicionar.Text != "Modificar")
+            if (!ValidarCpf.IsCpf(textBCpf.Text) && textBCpf.Text != string.Empty)
             {
-                aluno.Matricula = Convert.ToInt32(textBMatricula.Text);
-                aluno.Nome = textBNome.Text.Trim();
-                aluno.Cpf = textBCpf.Text;
-                aluno.Nascimento = Convert.ToDateTime(maskedTBNascimento.Text);
-                aluno.Sexo = (EnumeradorSexo)comboBSexo.SelectedIndex;
-
+                MessageBox.Show("CPF invalido", "Erro");
+                return;
+            }
+            RepositorioAluno dadosAluno = new RepositorioAluno();
+            if (dadosAluno.ProcureCpfJaCadastrado(textBCpf.Text, Convert.ToInt32(textBMatricula.Text)) && textBCpf.Text != string.Empty)
+            {
+                MessageBox.Show("CPF ja cadastrado!!", "Erro");
+                return;
+            }
+            Aluno aluno = new Aluno();
+            aluno.Matricula = Convert.ToInt32(textBMatricula.Text);
+            aluno.Nome = textBNome.Text.Trim();
+            aluno.Cpf = textBCpf.Text;
+            aluno.Nascimento = Convert.ToDateTime(maskedTBNascimento.Text);
+            aluno.Sexo = (EnumeradorSexo)comboBSexo.SelectedIndex;
+            if (buttonAdicionar.Text != "Modificar")
+            {                
                 try
                 {
-                    dadosaluno.Add(aluno);
-                    preencheGrid();
+                    dadosAluno.AdicioneNovoAluno(aluno);
+                    PreencheGrid();
                     MessageBox.Show("Aluno inserido com sucesso !", "Sucesso", MessageBoxButtons.OK);
-                    Limpar();
+                    LimpeOsCampos();
                 }
                 catch (Exception)
                 {
@@ -122,46 +120,29 @@ namespace Interface
                 }
             }
             else
-            {
-                Aluno alun = new Aluno();
-                alun.Matricula = Convert.ToInt32(textBMatricula.Text);
-                alun.Nome = textBNome.Text.Trim();
-                alun.Cpf = textBCpf.Text;
-                alun.Nascimento = Convert.ToDateTime(maskedTBNascimento.Text);
-                alun.Sexo = (EnumeradorSexo)comboBSexo.SelectedIndex;
-
-
-
+            {              
                 try
                 {
-                    dadosaluno.AtualizeOsAlunos(alun);
-                    preencheGrid();
+                    dadosAluno.AtualizeAluno(aluno);
+                    PreencheGrid();
                     MessageBox.Show("Aluno modificado com sucesso!", "Sucesso", MessageBoxButtons.OK);
-                    Limpar();
+                    LimpeOsCampos();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Erro no cadastro, algum dos campos esta inserido de maneira incorreta!", "Erro", MessageBoxButtons.OK);
+                    MessageBox.Show("Erro na modificação, algum dos campos esta inserido de maneira incorreta!", "Erro", MessageBoxButtons.OK);
                 }
-                buttonAdicionar.Text = "Adicionar";
-                buttonLimpar.Text = "Limpar";
-                groupBCadEditAluno.Text = "Novo aluno";
-                textBMatricula.Enabled = true;
-                buttonExcluir.Enabled = false;
+                VolteDeEdicaoParaCadastro();
             }
         }
         private void buttonLimpar_Click(object sender, EventArgs e)
         {
-            Limpar();
+            LimpeOsCampos();
 
             if (buttonLimpar.Text == "Cancelar")
             {
                 MessageBox.Show("A edição do aluno foi cancelada");
-                buttonAdicionar.Text = "Adicionar";
-                buttonLimpar.Text = "Limpar";
-                groupBCadEditAluno.Text = "Novo aluno";
-                buttonExcluir.Enabled = false;
-                textBMatricula.Enabled = true;
+                VolteDeEdicaoParaCadastro();
             }
         }
         private void buttonPesquisar_Click(object sender, EventArgs e)
@@ -173,8 +154,8 @@ namespace Interface
             {
                 try
                 {
-                    bs.DataSource = repositorioAluno.BusqueAlunosPorMatricula(matricula);
-                    dataGridAluno.DataSource = bs;
+                    bindingSource.DataSource = repositorioAluno.BusqueAlunosPorMatricula(matricula);
+                    dataGridAluno.DataSource = bindingSource;
                 }
                 catch (Exception)
                 {
@@ -187,8 +168,8 @@ namespace Interface
                 var alunos = (List<Aluno>)repositorioAluno.BusqueAlunosPorParteDoNome(nomeAluno);
                 try
                 {
-                    bs.DataSource = alunos;
-                    dataGridAluno.DataSource = bs;
+                    bindingSource.DataSource = alunos;
+                    dataGridAluno.DataSource = bindingSource;
                 }
                 catch (Exception)
                 {
@@ -216,15 +197,11 @@ namespace Interface
                 {
                     try
                     {
-                        dadosAlunos.RemovaOsAlunos(aluno);
-                        preencheGrid();
+                        dadosAlunos.RemovaAluno(aluno);
+                        PreencheGrid();
                         MessageBox.Show("Aluno excluído com sucesso !", "Alterar", MessageBoxButtons.OK);
-                        Limpar();
-                        buttonAdicionar.Text = "Adicionar";
-                        buttonLimpar.Text = "Limpar";
-                        groupBCadEditAluno.Text = "Novo aluno";
-                        buttonExcluir.Enabled = false;
-                        textBMatricula.Enabled = true;
+                        LimpeOsCampos();
+                        VolteDeEdicaoParaCadastro();
                     }
                     catch (Exception ex)
                     {
@@ -267,7 +244,7 @@ namespace Interface
                     {
                         MessageBox.Show(ex.Message, "Erro");
                     }
-                    preencheDados(aluno);
+                    PreencheDados(aluno);
                 }
             }
         }
@@ -280,9 +257,9 @@ namespace Interface
         }
         private void textBPesquisa_TextChanged(object sender, EventArgs e)
         {
-            if (textBPesquisa.Text == "")
+            if (textBPesquisa.Text == string.Empty)
             {
-                preencheGrid();
+                PreencheGrid();
                 textBMatricula.Enabled = true;
             }
         }
@@ -312,7 +289,7 @@ namespace Interface
                     MessageBox.Show("Número de matricula invalido!\nA matricula deve ser positiva e diferente de 0", "Erro");
                     textBMatricula.Clear();
                 }
-                if (repositorioAluno.MatriculaExistente(matricula))
+                if (repositorioAluno.ProcureMatriculaJaCadastrada(matricula))
                 {
                     MessageBox.Show("Número de matricula ja cadastrado!", "Erro");
                     textBMatricula.Clear();

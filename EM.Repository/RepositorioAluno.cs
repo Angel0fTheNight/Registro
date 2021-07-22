@@ -9,7 +9,7 @@ namespace EM.Repository
 {
     public class RepositorioAluno : RepositorioAbstrato<Aluno>
     {
-        public bool CpfExistente(string cpf, int matricula)
+        public bool ProcureCpfJaCadastrado(string cpf, int matricula)
         {
             if (Get(aluno => aluno.Cpf == cpf && aluno.Matricula != matricula).First() != null)
             {
@@ -17,7 +17,7 @@ namespace EM.Repository
             }
             return false;
        }
-        public bool MatriculaExistente(int matricula)
+        public bool ProcureMatriculaJaCadastrada(int matricula)
         {
             if(BusqueAlunosPorMatricula(matricula) != null)
             {
@@ -25,7 +25,7 @@ namespace EM.Repository
             }           
             return false;                                
         }
-        public override void Add(Aluno aluno)
+        public override void AdicioneNovoAluno(Aluno aluno)
         {
             using (FbConnection conexaoFireBird = AcessoFB.GetInstancia().GetConexao())
             {
@@ -48,7 +48,7 @@ namespace EM.Repository
                     }
             }
         }
-        public override void RemovaOsAlunos(Aluno aluno)
+        public override void RemovaAluno(Aluno aluno)
         {
             using (FbConnection conexaoFireBird = AcessoFB.GetInstancia().GetConexao())
             {
@@ -70,7 +70,7 @@ namespace EM.Repository
                 }
             }
         }
-        public override void AtualizeOsAlunos(Aluno aluno)
+        public override void AtualizeAluno(Aluno aluno)
         {
             using (FbConnection conexaoFireBird = AcessoFB.GetInstancia().GetConexao())
             {               

@@ -8,15 +8,15 @@ namespace EM.Repository
 {
     public abstract class RepositorioAbstrato<T> where T : IEntidade<T>
     {
-        public virtual void Add(T objeto)
+        public virtual void AdicioneNovoAluno(T objeto)
         {
 
         }
-        public virtual void RemovaOsAlunos(T objeto)
+        public virtual void RemovaAluno(T objeto)
         {
 
         }
-        public virtual void AtualizeOsAlunos(T objeto)
+        public virtual void AtualizeAluno(T objeto)
         {
 
         }
