@@ -47,7 +47,7 @@ namespace Interface
             this.label1 = new System.Windows.Forms.Label();
             this.textBPesquisa = new System.Windows.Forms.TextBox();
             this.buttonPesquisar = new System.Windows.Forms.Button();
-            this.dataGridAluno = new System.Windows.Forms.DataGridView();
+            this.dgvAluno = new System.Windows.Forms.DataGridView();
             this.matriculaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sexoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,7 +59,7 @@ namespace Interface
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBCadEditAluno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.acessoFBBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridAluno)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAluno)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBCadEditAluno
@@ -91,7 +91,7 @@ namespace Interface
             this.buttonAdicionar.TabIndex = 7;
             this.buttonAdicionar.Text = "Adicionar";
             this.buttonAdicionar.UseVisualStyleBackColor = true;
-            this.buttonAdicionar.Click += new System.EventHandler(this.buttonAdicionar_Click);
+            this.buttonAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // buttonLimpar
             // 
@@ -101,7 +101,7 @@ namespace Interface
             this.buttonLimpar.TabIndex = 6;
             this.buttonLimpar.Text = "Limpar";
             this.buttonLimpar.UseVisualStyleBackColor = true;
-            this.buttonLimpar.Click += new System.EventHandler(this.buttonLimpar_Click);
+            this.buttonLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // comboBSexo
             // 
@@ -128,7 +128,7 @@ namespace Interface
             this.textBCpf.ShortcutsEnabled = false;
             this.textBCpf.Size = new System.Drawing.Size(130, 20);
             this.textBCpf.TabIndex = 5;
-            this.textBCpf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBCpf_KeyPress);
+            this.textBCpf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCpf_KeyPress);
             // 
             // textBNome
             // 
@@ -138,7 +138,7 @@ namespace Interface
             this.textBNome.ShortcutsEnabled = false;
             this.textBNome.Size = new System.Drawing.Size(421, 20);
             this.textBNome.TabIndex = 2;
-            this.textBNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBNome_KeyPress);
+            this.textBNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNome_KeyPress);
             // 
             // maskedTBNascimento
             // 
@@ -159,8 +159,8 @@ namespace Interface
             this.textBMatricula.Size = new System.Drawing.Size(91, 20);
             this.textBMatricula.TabIndex = 1;
             this.textBMatricula.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBMatricula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBMatricula_KeyPress);
-            this.textBMatricula.Leave += new System.EventHandler(this.textBMatricula_Leave);
+            this.textBMatricula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMatricula_KeyPress);
+            this.textBMatricula.Leave += new System.EventHandler(this.txtMatricula_Leave);
             // 
             // label5
             // 
@@ -214,7 +214,7 @@ namespace Interface
             this.textBPesquisa.ShortcutsEnabled = false;
             this.textBPesquisa.Size = new System.Drawing.Size(456, 20);
             this.textBPesquisa.TabIndex = 8;
-            this.textBPesquisa.TextChanged += new System.EventHandler(this.textBPesquisa_TextChanged);
+            this.textBPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
             // buttonPesquisar
             // 
@@ -224,37 +224,37 @@ namespace Interface
             this.buttonPesquisar.TabIndex = 9;
             this.buttonPesquisar.Text = "Pesquisar";
             this.buttonPesquisar.UseVisualStyleBackColor = true;
-            this.buttonPesquisar.Click += new System.EventHandler(this.buttonPesquisar_Click);
+            this.buttonPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
-            // dataGridAluno
+            // dgvAluno
             // 
-            this.dataGridAluno.AllowUserToAddRows = false;
-            this.dataGridAluno.AllowUserToDeleteRows = false;
-            this.dataGridAluno.AllowUserToResizeColumns = false;
-            this.dataGridAluno.AllowUserToResizeRows = false;
-            this.dataGridAluno.AutoGenerateColumns = false;
-            this.dataGridAluno.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridAluno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridAluno.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvAluno.AllowUserToAddRows = false;
+            this.dgvAluno.AllowUserToDeleteRows = false;
+            this.dgvAluno.AllowUserToResizeColumns = false;
+            this.dgvAluno.AllowUserToResizeRows = false;
+            this.dgvAluno.AutoGenerateColumns = false;
+            this.dgvAluno.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAluno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAluno.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.matriculaDataGridViewTextBoxColumn,
             this.nomeDataGridViewTextBoxColumn,
             this.sexoDataGridViewTextBoxColumn,
             this.nascimentoDataGridViewTextBoxColumn,
             this.cpfDataGridViewTextBoxColumn});
-            this.dataGridAluno.DataSource = this.acessoFBBindingSource;
-            this.dataGridAluno.EnableHeadersVisualStyles = false;
-            this.dataGridAluno.Location = new System.Drawing.Point(12, 171);
-            this.dataGridAluno.MultiSelect = false;
-            this.dataGridAluno.Name = "dataGridAluno";
-            this.dataGridAluno.ReadOnly = true;
-            this.dataGridAluno.RowHeadersVisible = false;
-            this.dataGridAluno.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridAluno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridAluno.Size = new System.Drawing.Size(550, 195);
-            this.dataGridAluno.StandardTab = true;
-            this.dataGridAluno.TabIndex = 0;
-            this.dataGridAluno.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAluno_CellClick);
-            this.dataGridAluno.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridAluno_CellFormatting);
+            this.dgvAluno.DataSource = this.acessoFBBindingSource;
+            this.dgvAluno.EnableHeadersVisualStyles = false;
+            this.dgvAluno.Location = new System.Drawing.Point(12, 171);
+            this.dgvAluno.MultiSelect = false;
+            this.dgvAluno.Name = "dgvAluno";
+            this.dgvAluno.ReadOnly = true;
+            this.dgvAluno.RowHeadersVisible = false;
+            this.dgvAluno.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAluno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvAluno.Size = new System.Drawing.Size(550, 195);
+            this.dgvAluno.StandardTab = true;
+            this.dgvAluno.TabIndex = 0;
+            this.dgvAluno.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAluno_CellClick);
+            this.dgvAluno.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAluno_CellFormatting);
             // 
             // matriculaDataGridViewTextBoxColumn
             // 
@@ -304,7 +304,7 @@ namespace Interface
             this.buttonExcluir.TabIndex = 11;
             this.buttonExcluir.Text = "Excluir";
             this.buttonExcluir.UseVisualStyleBackColor = true;
-            this.buttonExcluir.Click += new System.EventHandler(this.buttonExcluir_Click);
+            this.buttonExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // buttonEditar
             // 
@@ -314,7 +314,7 @@ namespace Interface
             this.buttonEditar.TabIndex = 10;
             this.buttonEditar.Text = "Editar";
             this.buttonEditar.UseVisualStyleBackColor = true;
-            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
+            this.buttonEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -337,7 +337,7 @@ namespace Interface
             this.ClientSize = new System.Drawing.Size(574, 404);
             this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.buttonExcluir);
-            this.Controls.Add(this.dataGridAluno);
+            this.Controls.Add(this.dgvAluno);
             this.Controls.Add(this.buttonPesquisar);
             this.Controls.Add(this.textBPesquisa);
             this.Controls.Add(this.groupBCadEditAluno);
@@ -350,7 +350,7 @@ namespace Interface
             this.groupBCadEditAluno.ResumeLayout(false);
             this.groupBCadEditAluno.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.acessoFBBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridAluno)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAluno)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,7 +376,7 @@ namespace Interface
         private System.Windows.Forms.Button buttonExcluir;
         private System.Windows.Forms.Button buttonEditar;
         private System.Windows.Forms.BindingSource acessoFBBindingSource;
-        private System.Windows.Forms.DataGridView dataGridAluno;
+        private System.Windows.Forms.DataGridView dgvAluno;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn matriculaDataGridViewTextBoxColumn;

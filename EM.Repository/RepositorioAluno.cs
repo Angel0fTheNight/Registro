@@ -169,7 +169,7 @@ namespace EM.Repository
 
         public FbConnection GetConexao()
         {
-            string conn = @"DataSource=localhost; Port=3053; Database=C:\BANCODEDADOS_v3.fb3; username= SYSDBA; password = masterkey";
+            string conn = @"DataSource=localhost; Port=3053; Database=C:\Escola.fb3; username= SYSDBA; password = masterkey";
             return new FbConnection(conn);
         }
     }

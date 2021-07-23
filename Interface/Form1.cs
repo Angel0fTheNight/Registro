@@ -17,9 +17,9 @@ namespace Interface
             try
             {
                 RepositorioAluno dadosAlunos = new RepositorioAluno();
-                bindingSource.DataSource = dadosAlunos.BusqueTodosOsAlunos();
-                dataGridAluno.DataSource = bindingSource;
-                dataGridAluno.ClearSelection();
+                bs.DataSource = dadosAlunos.BusqueTodosOsAlunos();
+                dgvAluno.DataSource = bs;
+                dgvAluno.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -34,7 +34,7 @@ namespace Interface
             maskedTBNascimento.Text = Convert.ToString(alun.Nascimento);
             comboBSexo.SelectedIndex = (int)alun.Sexo;
         }
-        private BindingSource bindingSource = new BindingSource();
+        private BindingSource bs = new BindingSource();
         public void LimpeOsCampos()
         {
             textBCpf.Text = string.Empty;
@@ -43,7 +43,7 @@ namespace Interface
             maskedTBNascimento.Text = string.Empty;
             comboBSexo.SelectedIndex = -1;
             textBPesquisa.Text = string.Empty;
-            dataGridAluno.ClearSelection();
+            dgvAluno.ClearSelection();
         }
         public void VolteDeEdicaoParaCadastro()
         {
@@ -58,7 +58,7 @@ namespace Interface
             InitializeComponent();
             textBNome.MaxLength = 100;
         }
-        private void buttonAdicionar_Click(object sender, EventArgs e)
+        private void btnAdicionar_Click(object sender, EventArgs e)
         {
             ValidacaoDeCampos validacaoDeCampoVazio = new ValidacaoDeCampos();
             if (validacaoDeCampoVazio.CampoVazio(textBNome.Text.Trim()))
@@ -93,20 +93,20 @@ namespace Interface
                 MessageBox.Show("CPF invalido", "Erro");
                 return;
             }
-            RepositorioAluno dadosAluno = new RepositorioAluno();
+            var dadosAluno = new RepositorioAluno();
             if (dadosAluno.ProcureCpfJaCadastrado(textBCpf.Text, Convert.ToInt32(textBMatricula.Text)) && textBCpf.Text != string.Empty)
             {
                 MessageBox.Show("CPF ja cadastrado!!", "Erro");
                 return;
             }
-            Aluno aluno = new Aluno();
+            var aluno = new Aluno();
             aluno.Matricula = Convert.ToInt32(textBMatricula.Text);
             aluno.Nome = textBNome.Text.Trim();
             aluno.Cpf = textBCpf.Text;
             aluno.Nascimento = Convert.ToDateTime(maskedTBNascimento.Text);
             aluno.Sexo = (EnumeradorSexo)comboBSexo.SelectedIndex;
             if (buttonAdicionar.Text != "Modificar")
-            {                
+            {
                 try
                 {
                     dadosAluno.AdicioneNovoAluno(aluno);
@@ -120,7 +120,7 @@ namespace Interface
                 }
             }
             else
-            {              
+            {
                 try
                 {
                     dadosAluno.AtualizeAluno(aluno);
@@ -135,7 +135,7 @@ namespace Interface
                 VolteDeEdicaoParaCadastro();
             }
         }
-        private void buttonLimpar_Click(object sender, EventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
             LimpeOsCampos();
 
@@ -145,7 +145,7 @@ namespace Interface
                 VolteDeEdicaoParaCadastro();
             }
         }
-        private void buttonPesquisar_Click(object sender, EventArgs e)
+        private void btnPesquisar_Click(object sender, EventArgs e)
         {
             RepositorioAluno repositorioAluno = new RepositorioAluno();
             string resultado = textBPesquisa.Text;
@@ -154,8 +154,8 @@ namespace Interface
             {
                 try
                 {
-                    bindingSource.DataSource = repositorioAluno.BusqueAlunosPorMatricula(matricula);
-                    dataGridAluno.DataSource = bindingSource;
+                    bs.DataSource = repositorioAluno.BusqueAlunosPorMatricula(matricula);
+                    dgvAluno.DataSource = bs;
                 }
                 catch (Exception)
                 {
@@ -168,8 +168,8 @@ namespace Interface
                 var alunos = (List<Aluno>)repositorioAluno.BusqueAlunosPorParteDoNome(nomeAluno);
                 try
                 {
-                    bindingSource.DataSource = alunos;
-                    dataGridAluno.DataSource = bindingSource;
+                    bs.DataSource = alunos;
+                    dgvAluno.DataSource = bs;
                 }
                 catch (Exception)
                 {
@@ -177,21 +177,21 @@ namespace Interface
                 }
             }
         }
-        private void buttonEditar_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
             buttonAdicionar.Text = "Modificar";
             buttonLimpar.Text = "Cancelar";
             groupBCadEditAluno.Text = "Editando aluno";
             buttonExcluir.Enabled = true;
             textBMatricula.Enabled = false;
-            dataGridAluno.ClearSelection();
+            dgvAluno.ClearSelection();
         }
-        private void buttonExcluir_Click(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
             try
             {
-                RepositorioAluno dadosAlunos = new RepositorioAluno();
-                Aluno aluno = dadosAlunos.BusqueAlunosPorMatricula(Convert.ToInt32(textBMatricula.Text));
+                var dadosAlunos = new RepositorioAluno();
+                var aluno = dadosAlunos.BusqueAlunosPorMatricula(Convert.ToInt32(textBMatricula.Text));
                 DialogResult resultado = MessageBox.Show("Tem certeza que deseja excluir esse aluno?", "Excluir aluno", MessageBoxButtons.YesNo);
                 if (resultado == DialogResult.Yes)
                 {
@@ -214,15 +214,15 @@ namespace Interface
                 MessageBox.Show("Selecione um aluno para excluí-lo!", "Erro", MessageBoxButtons.OK);
             }
         }
-        private void textBMatricula_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtMatricula_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = (!char.IsDigit(e.KeyChar) && e.KeyChar != 08);
         }
-        private void textBCpf_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtCpf_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = (!char.IsDigit(e.KeyChar) && e.KeyChar != 08);
         }
-        private void dataGridAluno_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvAluno_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             RepositorioAluno dadosAlunos = new RepositorioAluno();
             if (e.RowIndex == -1)
@@ -233,10 +233,10 @@ namespace Interface
             {
                 if (buttonAdicionar.Text == "Modificar")
                 {
-                    Aluno aluno = new Aluno();
+                    var aluno = new Aluno();
                     try
                     {
-                        int codigo = Convert.ToInt32(dataGridAluno.Rows[e.RowIndex].Cells[0].Value);
+                        int codigo = Convert.ToInt32(dgvAluno.Rows[e.RowIndex].Cells[0].Value);
                         aluno = dadosAlunos.BusqueAlunosPorMatricula(codigo);
                         textBMatricula.Enabled = false;
                     }
@@ -248,14 +248,14 @@ namespace Interface
                 }
             }
         }
-        private void textBNome_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNome_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
         }
-        private void textBPesquisa_TextChanged(object sender, EventArgs e)
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
             if (textBPesquisa.Text == string.Empty)
             {
@@ -263,7 +263,7 @@ namespace Interface
                 textBMatricula.Enabled = true;
             }
         }
-        private void dataGridAluno_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dgvAluno_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == 4 && e.Value != string.Empty)
             {
@@ -278,9 +278,9 @@ namespace Interface
                 e.FormattingApplied = true;
             }
         }
-        private void textBMatricula_Leave(object sender, EventArgs e)
+        private void txtMatricula_Leave(object sender, EventArgs e)
         {
-            RepositorioAluno repositorioAluno = new RepositorioAluno();
+            var repositorioAluno = new RepositorioAluno();
             if (textBMatricula.Text != string.Empty)
             {
                 int matricula = Convert.ToInt32(textBMatricula.Text);
