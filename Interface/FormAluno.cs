@@ -98,7 +98,7 @@ namespace Interface
                 return;
             }
             var dadosAluno = new RepositorioAluno();
-            if (dadosAluno.ProcureCpfJaCadastrado(textBCpf.Text, Convert.ToInt32(textBMatricula.Text)) && CampoVazio(textBCpf.Text))
+            if (dadosAluno.ProcureCpfJaCadastrado(textBCpf.Text, Convert.ToInt32(textBMatricula.Text)) && !CampoVazio(textBCpf.Text))
             {
                 MessageBox.Show("CPF ja cadastrado!!", "Erro");
                 return;
@@ -260,7 +260,7 @@ namespace Interface
         }
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
-            if (textBPesquisa.Text == string.Empty)
+            if (CampoVazio(textBPesquisa.Text))
             {
                 PreencheGrid();
                 textBMatricula.Enabled = true;
@@ -284,7 +284,7 @@ namespace Interface
         private void txtMatricula_Leave(object sender, EventArgs e)
         {
             var repositorioAluno = new RepositorioAluno();
-            if (textBMatricula.Text != string.Empty)
+            if (!CampoVazio(textBMatricula.Text))
             {
                 int matricula = Convert.ToInt32(textBMatricula.Text);
                 if (matricula == 0 || textBMatricula.Text.Contains("-"))
@@ -299,14 +299,6 @@ namespace Interface
                 }
             }
         }
-
-        private void textBNome_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        public bool CampoVazio(string campo)
-        {
-            return campo == string.Empty;
-        }
+        public bool CampoVazio(string campo) => campo == string.Empty;
     }
 }

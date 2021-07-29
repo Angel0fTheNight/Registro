@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XfVjgHRxF9F+Z/Fy0i/+evBCeDpFYprZikj544RconI=</dsig:DigestValue>
+        <dsig:DigestValue>ODyfmHnhBzE7zMd5WpB8JSHVG8xM1G/qtM8WB+vIoEo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/Mizc/TUFGTmvOByjP9SpSUOuGl3tXgwHXv3MAJ4WkE=</dsig:DigestValue>
+        <dsig:DigestValue>rzOGFHlhNNjUcwZLfOu37HG8yzdlgmbPK3TsUdLBU5E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interface.exe" size="255000">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interface.exe" size="4220440">
       <assemblyIdentity name="Interface" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Vu8CMiEENIBnb4p5dFMMfbcKYgV5huHBLWIKse4UqZs=</dsig:DigestValue>
+        <dsig:DigestValue>1AadIZ9Es4kZbLD5sUwcglbDELyR6UzQiaeyl5uVARw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
