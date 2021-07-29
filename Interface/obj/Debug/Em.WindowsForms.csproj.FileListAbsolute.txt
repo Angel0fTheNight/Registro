@@ -9,7 +9,6 @@ C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\EM.Domain.pdb
 C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Em.WindowsForms.csproj.AssemblyReference.cache
-C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.Form1.resources
 C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.Properties.Resources.resources
 C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Em.WindowsForms.csproj.GenerateResource.cache
 C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Em.WindowsForms.csproj.CoreCompileInputs.cache
@@ -19,3 +18,8 @@ C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.pdb
 C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\EM.Repository.dll
 C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\EM.Repository.pdb
 C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\EM.Repository.dll.config
+C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\Interface.exe.manifest
+C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\Interface.application
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.exe.manifest
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.application
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.FormAluno.resources

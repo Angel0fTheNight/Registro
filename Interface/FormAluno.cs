@@ -6,7 +6,7 @@ using EM.Repository;
 
 namespace Interface
 {
-    public partial class Form1 : Form
+    public partial class FormAluno : Form
     {
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -34,6 +34,11 @@ namespace Interface
             maskedTBNascimento.Text = Convert.ToString(alun.Nascimento);
             comboBSexo.SelectedIndex = (int)alun.Sexo;
         }
+        public void Preenche(string nome)
+        {
+            RepositorioAluno aluno = new RepositorioAluno();
+            PreencheDados((Aluno)aluno.BusqueAlunoPorNome(nome));
+        }
         private BindingSource bs = new BindingSource();
         public void LimpeOsCampos()
         {
@@ -53,26 +58,25 @@ namespace Interface
             buttonExcluir.Enabled = false;
             textBMatricula.Enabled = true;
         }
-        public Form1()
+        public FormAluno()
         {
             InitializeComponent();
             textBNome.MaxLength = 100;
         }
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            ValidacaoDeCampos validacaoDeCampoVazio = new ValidacaoDeCampos();
-            if (validacaoDeCampoVazio.CampoVazio(textBNome.Text.Trim()))
+            if (CampoVazio(textBNome.Text.Trim()))
             {
                 MessageBox.Show("O campo Nome esta vazio! O campo Nome é um campo obrigatorio!", "Erro");
                 textBNome.Clear();
                 return;
             }
-            if (validacaoDeCampoVazio.CampoVazio(textBMatricula.Text))
+            if (CampoVazio(textBMatricula.Text))
             {
                 MessageBox.Show("O campo Matricula esta vazio! O campo Matricula é um campo obrigatorio!", "Erro");
                 return;
             }
-            if (validacaoDeCampoVazio.CampoVazio(maskedTBNascimento.Text) || !maskedTBNascimento.MaskCompleted)
+            if (CampoVazio(maskedTBNascimento.Text) || !maskedTBNascimento.MaskCompleted)
             {
                 MessageBox.Show("O campo Nascimento esta vazio ou incompleto! O campo Nascimento é um campo obrigatorio!", "Erro");
                 return;
@@ -94,7 +98,7 @@ namespace Interface
                 return;
             }
             var dadosAluno = new RepositorioAluno();
-            if (dadosAluno.ProcureCpfJaCadastrado(textBCpf.Text, Convert.ToInt32(textBMatricula.Text)) && textBCpf.Text != string.Empty)
+            if (dadosAluno.ProcureCpfJaCadastrado(textBCpf.Text, Convert.ToInt32(textBMatricula.Text)) && CampoVazio(textBCpf.Text))
             {
                 MessageBox.Show("CPF ja cadastrado!!", "Erro");
                 return;
@@ -164,8 +168,7 @@ namespace Interface
             }
             else
             {
-                var nomeAluno = textBPesquisa.Text;
-                var alunos = (List<Aluno>)repositorioAluno.BusqueAlunosPorParteDoNome(nomeAluno);
+                var alunos = (List<Aluno>)repositorioAluno.BusqueAlunosPorParteDoNome(resultado);
                 try
                 {
                     bs.DataSource = alunos;
@@ -295,6 +298,15 @@ namespace Interface
                     textBMatricula.Clear();
                 }
             }
+        }
+
+        private void textBNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        public bool CampoVazio(string campo)
+        {
+            return campo == string.Empty;
         }
     }
 }

@@ -55,7 +55,6 @@
     <Compile Include="EnumeradorSexo.cs" />
     <Compile Include="IEntidade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValidacaoDeCampos.cs" />
     <Compile Include="ValidarCpf.cs" />
   </ItemGroup>
   <ItemGroup>

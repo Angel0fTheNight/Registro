@@ -1,7 +1,7 @@
 ﻿
 namespace Interface
 {
-    partial class Form1
+    partial class FormAluno
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Interface
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAluno));
             this.groupBCadEditAluno = new System.Windows.Forms.GroupBox();
             this.buttonAdicionar = new System.Windows.Forms.Button();
             this.buttonLimpar = new System.Windows.Forms.Button();
@@ -138,6 +138,7 @@ namespace Interface
             this.textBNome.ShortcutsEnabled = false;
             this.textBNome.Size = new System.Drawing.Size(421, 20);
             this.textBNome.TabIndex = 2;
+            this.textBNome.TextChanged += new System.EventHandler(this.textBNome_TextChanged);
             this.textBNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNome_KeyPress);
             // 
             // maskedTBNascimento

@@ -133,7 +133,6 @@ namespace EM.Repository
         {
             return BusqueTodosOsAlunos().Where(predicate.Compile());
         }
-
         public Aluno BusqueAlunosPorMatricula(int matricula)
         {
             try
@@ -144,6 +143,25 @@ namespace EM.Repository
             {
                 throw fbex;
             }
+        }
+        public Aluno BusqueAlunoPorNome(string nome)
+        {
+            try
+            {
+                return Get(aluno => aluno.Nome.ToLower().Contains(nome.ToLower())).First();
+            }
+            catch (Exception fbex)
+            {
+                throw fbex;
+            }
+        }
+        public bool EntrarNoSistemaComoAluno(string nome, string senha)
+        {
+            if (Get(alun => alun.Nome.ToLower() == nome && alun.Cpf == senha).First() != null)
+            {
+                return true;
+            }
+            return false;           
         }
         public IEnumerable<Aluno> BusqueAlunosPorParteDoNome(string parteDoNome)
         {            
