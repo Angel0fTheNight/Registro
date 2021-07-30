@@ -57,6 +57,7 @@ namespace Interface
             this.buttonEditar = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSair = new System.Windows.Forms.Button();
             this.groupBCadEditAluno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.acessoFBBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAluno)).BeginInit();
@@ -298,7 +299,7 @@ namespace Interface
             // buttonExcluir
             // 
             this.buttonExcluir.Enabled = false;
-            this.buttonExcluir.Location = new System.Drawing.Point(474, 372);
+            this.buttonExcluir.Location = new System.Drawing.Point(93, 372);
             this.buttonExcluir.Name = "buttonExcluir";
             this.buttonExcluir.Size = new System.Drawing.Size(75, 23);
             this.buttonExcluir.TabIndex = 11;
@@ -308,7 +309,7 @@ namespace Interface
             // 
             // buttonEditar
             // 
-            this.buttonEditar.Location = new System.Drawing.Point(393, 372);
+            this.buttonEditar.Location = new System.Drawing.Point(12, 369);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(75, 23);
             this.buttonEditar.TabIndex = 10;
@@ -329,12 +330,23 @@ namespace Interface
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
-            // Form1
+            // btnSair
+            // 
+            this.btnSair.Location = new System.Drawing.Point(487, 372);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(75, 23);
+            this.btnSair.TabIndex = 12;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // FormAluno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(574, 404);
+            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.buttonExcluir);
             this.Controls.Add(this.dgvAluno);
@@ -344,7 +356,7 @@ namespace Interface
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "FormAluno";
             this.Text = "Cadastro de Alunos";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBCadEditAluno.ResumeLayout(false);
@@ -384,6 +396,7 @@ namespace Interface
         private System.Windows.Forms.DataGridViewTextBoxColumn sexoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cpfDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnSair;
     }
 }
 

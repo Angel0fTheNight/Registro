@@ -50,13 +50,21 @@ namespace Interface
             textBPesquisa.Text = string.Empty;
             dgvAluno.ClearSelection();
         }
-        public void VolteDeEdicaoParaCadastro()
+        private bool _EstaEmEdicao;
+        public bool EstaEmEdicao
         {
-            buttonAdicionar.Text = "Adicionar";
-            buttonLimpar.Text = "Limpar";
-            groupBCadEditAluno.Text = "Novo aluno";
-            buttonExcluir.Enabled = false;
-            textBMatricula.Enabled = true;
+            get
+            {
+               return _EstaEmEdicao;
+            }
+            set 
+            {
+                _EstaEmEdicao = value;
+                buttonAdicionar.Text = _EstaEmEdicao ? "Modificar" : "Adcionar";
+                buttonLimpar.Text = _EstaEmEdicao ? "Cancelar" : "Limpar";
+                groupBCadEditAluno.Text = _EstaEmEdicao ? "Editando Aluno" : "Novo Aluno";
+                textBMatricula.Enabled = !_EstaEmEdicao
+            ;}
         }
         public FormAluno()
         {
@@ -65,42 +73,8 @@ namespace Interface
         }
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if (CampoVazio(textBNome.Text.Trim()))
+            if (Validacao())
             {
-                MessageBox.Show("O campo Nome esta vazio! O campo Nome é um campo obrigatorio!", "Erro");
-                textBNome.Clear();
-                return;
-            }
-            if (CampoVazio(textBMatricula.Text))
-            {
-                MessageBox.Show("O campo Matricula esta vazio! O campo Matricula é um campo obrigatorio!", "Erro");
-                return;
-            }
-            if (CampoVazio(maskedTBNascimento.Text) || !maskedTBNascimento.MaskCompleted)
-            {
-                MessageBox.Show("O campo Nascimento esta vazio ou incompleto! O campo Nascimento é um campo obrigatorio!", "Erro");
-                return;
-            }
-            if (comboBSexo.SelectedIndex != 0 && comboBSexo.SelectedIndex != 1)
-            {
-                MessageBox.Show("O campo Sexo não foi selecionado! O campo Sexo é um campo obrigatorio!", "Erro");
-                return;
-            }
-            DateTime dataHoje = DateTime.Today;
-            if (!DateTime.TryParse(maskedTBNascimento.Text, out _) || dataHoje <= Convert.ToDateTime(maskedTBNascimento.Text))
-            {
-                MessageBox.Show("Data Invalida", "Erro");
-                return;
-            }
-            if (!ValidarCpf.IsCpf(textBCpf.Text) && textBCpf.Text != string.Empty)
-            {
-                MessageBox.Show("CPF invalido", "Erro");
-                return;
-            }
-            var dadosAluno = new RepositorioAluno();
-            if (dadosAluno.ProcureCpfJaCadastrado(textBCpf.Text, Convert.ToInt32(textBMatricula.Text)) && !CampoVazio(textBCpf.Text))
-            {
-                MessageBox.Show("CPF ja cadastrado!!", "Erro");
                 return;
             }
             var aluno = new Aluno();
@@ -109,7 +83,8 @@ namespace Interface
             aluno.Cpf = textBCpf.Text;
             aluno.Nascimento = Convert.ToDateTime(maskedTBNascimento.Text);
             aluno.Sexo = (EnumeradorSexo)comboBSexo.SelectedIndex;
-            if (buttonAdicionar.Text != "Modificar")
+            var dadosAluno = new RepositorioAluno();
+            if (!EstaEmEdicao)
             {
                 try
                 {
@@ -136,17 +111,17 @@ namespace Interface
                 {
                     MessageBox.Show("Erro na modificação, algum dos campos esta inserido de maneira incorreta!", "Erro", MessageBoxButtons.OK);
                 }
-                VolteDeEdicaoParaCadastro();
+               
             }
         }
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             LimpeOsCampos();
 
-            if (buttonLimpar.Text == "Cancelar")
+            if (EstaEmEdicao)
             {
                 MessageBox.Show("A edição do aluno foi cancelada");
-                VolteDeEdicaoParaCadastro();
+                EstaEmEdicao = false;
             }
         }
         private void btnPesquisar_Click(object sender, EventArgs e)
@@ -182,12 +157,9 @@ namespace Interface
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            buttonAdicionar.Text = "Modificar";
-            buttonLimpar.Text = "Cancelar";
-            groupBCadEditAluno.Text = "Editando aluno";
-            buttonExcluir.Enabled = true;
-            textBMatricula.Enabled = false;
+            EstaEmEdicao = !EstaEmEdicao;
             dgvAluno.ClearSelection();
+           
         }
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -203,8 +175,7 @@ namespace Interface
                         dadosAlunos.RemovaAluno(aluno);
                         PreencheGrid();
                         MessageBox.Show("Aluno excluído com sucesso !", "Alterar", MessageBoxButtons.OK);
-                        LimpeOsCampos();
-                        VolteDeEdicaoParaCadastro();
+                        LimpeOsCampos();                       
                     }
                     catch (Exception ex)
                     {
@@ -234,7 +205,7 @@ namespace Interface
             }
             else
             {
-                if (buttonAdicionar.Text == "Modificar")
+                if (EstaEmEdicao)
                 {
                     var aluno = new Aluno();
                     try
@@ -300,5 +271,48 @@ namespace Interface
             }
         }
         public bool CampoVazio(string campo) => campo == string.Empty;
+        private void btnSair_Click(object sender, EventArgs e) => Close();
+        private bool Validacao()
+        {
+            if (CampoVazio(textBNome.Text.Trim()))
+            {
+                MessageBox.Show("O campo Nome esta vazio! O campo Nome é um campo obrigatorio!", "Erro");
+                textBNome.Clear();
+                return true;
+            }
+            if (CampoVazio(textBMatricula.Text))
+            {
+                MessageBox.Show("O campo Matricula esta vazio! O campo Matricula é um campo obrigatorio!", "Erro");
+                return true;
+            }
+            if (CampoVazio(maskedTBNascimento.Text) || !maskedTBNascimento.MaskCompleted)
+            {
+                MessageBox.Show("O campo Nascimento esta vazio ou incompleto! O campo Nascimento é um campo obrigatorio!", "Erro");
+                return true;
+            }
+            if (comboBSexo.SelectedIndex != 0 && comboBSexo.SelectedIndex != 1)
+            {
+                MessageBox.Show("O campo Sexo não foi selecionado! O campo Sexo é um campo obrigatorio!", "Erro");
+                return true;
+            }
+            DateTime dataHoje = DateTime.Today;
+            if (!DateTime.TryParse(maskedTBNascimento.Text, out _) || dataHoje <= Convert.ToDateTime(maskedTBNascimento.Text))
+            {
+                MessageBox.Show("Data Invalida", "Erro");
+                return true;
+            }
+            if (!ValidarCpf.IsCpf(textBCpf.Text) && textBCpf.Text != string.Empty)
+            {
+                MessageBox.Show("CPF invalido", "Erro");
+                return true;
+            }
+            var dadosAluno = new RepositorioAluno();
+            if (dadosAluno.ProcureCpfJaCadastrado(textBCpf.Text, Convert.ToInt32(textBMatricula.Text)) && !CampoVazio(textBCpf.Text))
+            {
+                MessageBox.Show("CPF ja cadastrado!!", "Erro");
+                return true;
+            }
+            return false;
+        }
     }
 }
