@@ -9,8 +9,10 @@ namespace EM.Repository
 {
     public class RepositorioAluno : RepositorioAbstrato<Aluno>
     {
-        public bool ProcureCpfJaCadastrado(string cpf, int matricula) => Get(aluno => aluno.Cpf == cpf && aluno.Matricula != matricula).FirstOrDefault() != null;           
-        public bool ProcureMatriculaJaCadastrada(int matricula) => BusqueAlunosPorMatricula(matricula) != null;
+        public bool ProcureCpfJaCadastrado(string cpf, int matricula) => 
+            Get(aluno => aluno.Cpf == cpf && aluno.Matricula != matricula).FirstOrDefault() != null;           
+        public bool ProcureMatriculaJaCadastrada(int matricula) => 
+            BusqueAlunosPorMatricula(matricula) != null;
         public override void AdicioneNovoAluno(Aluno aluno)
         {
             using (FbConnection conexaoFireBird = AcessoFB.GetInstancia().GetConexao())
@@ -141,7 +143,8 @@ namespace EM.Repository
                 throw fbex;
             }
         }
-        public bool EntrarNoSistemaComoAluno(string nome, string senha) => Get(alun => alun.Nome.ToLower() == nome.ToLower() && alun.Cpf == senha).First() != null;      
+        public bool EntrarNoSistemaComoAluno(string nome, string senha) => 
+            Get(alun => alun.Nome.ToLower() == nome.ToLower() && alun.Cpf == senha).First() != null;      
         public IEnumerable<Aluno> BusqueAlunosPorParteDoNome(string parteDoNome)
         {            
             try

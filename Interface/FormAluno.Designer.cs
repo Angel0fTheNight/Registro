@@ -35,32 +35,32 @@ namespace Interface
             this.buttonAdicionar = new System.Windows.Forms.Button();
             this.buttonLimpar = new System.Windows.Forms.Button();
             this.comboBSexo = new System.Windows.Forms.ComboBox();
-            this.acessoFBBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBCpf = new System.Windows.Forms.TextBox();
             this.textBNome = new System.Windows.Forms.TextBox();
             this.maskedTBNascimento = new System.Windows.Forms.MaskedTextBox();
             this.textBMatricula = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelCpf = new System.Windows.Forms.Label();
+            this.labelNascimento = new System.Windows.Forms.Label();
+            this.labelSexo = new System.Windows.Forms.Label();
+            this.labelNome = new System.Windows.Forms.Label();
+            this.labelMatricula = new System.Windows.Forms.Label();
             this.textBPesquisa = new System.Windows.Forms.TextBox();
             this.buttonPesquisar = new System.Windows.Forms.Button();
             this.dgvAluno = new System.Windows.Forms.DataGridView();
-            this.matriculaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sexoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cpfDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonExcluir = new System.Windows.Forms.Button();
             this.buttonEditar = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSair = new System.Windows.Forms.Button();
+            this.matriculaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sexoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cpfDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.acessoFBBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBCadEditAluno.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.acessoFBBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAluno)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.acessoFBBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBCadEditAluno
@@ -72,11 +72,11 @@ namespace Interface
             this.groupBCadEditAluno.Controls.Add(this.textBNome);
             this.groupBCadEditAluno.Controls.Add(this.maskedTBNascimento);
             this.groupBCadEditAluno.Controls.Add(this.textBMatricula);
-            this.groupBCadEditAluno.Controls.Add(this.label5);
-            this.groupBCadEditAluno.Controls.Add(this.label4);
-            this.groupBCadEditAluno.Controls.Add(this.label3);
-            this.groupBCadEditAluno.Controls.Add(this.label2);
-            this.groupBCadEditAluno.Controls.Add(this.label1);
+            this.groupBCadEditAluno.Controls.Add(this.labelCpf);
+            this.groupBCadEditAluno.Controls.Add(this.labelNascimento);
+            this.groupBCadEditAluno.Controls.Add(this.labelSexo);
+            this.groupBCadEditAluno.Controls.Add(this.labelNome);
+            this.groupBCadEditAluno.Controls.Add(this.labelMatricula);
             this.groupBCadEditAluno.Location = new System.Drawing.Point(12, 12);
             this.groupBCadEditAluno.Name = "groupBCadEditAluno";
             this.groupBCadEditAluno.Size = new System.Drawing.Size(559, 124);
@@ -116,10 +116,6 @@ namespace Interface
             this.comboBSexo.Name = "comboBSexo";
             this.comboBSexo.Size = new System.Drawing.Size(88, 21);
             this.comboBSexo.TabIndex = 3;
-            // 
-            // acessoFBBindingSource
-            // 
-            this.acessoFBBindingSource.DataSource = typeof(EM.Repository.AcessoFB);
             // 
             // textBCpf
             // 
@@ -163,54 +159,55 @@ namespace Interface
             this.textBMatricula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMatricula_KeyPress);
             this.textBMatricula.Leave += new System.EventHandler(this.txtMatricula_Leave);
             // 
-            // label5
+            // labelCpf
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(232, 74);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "CPF";
+            this.labelCpf.AutoSize = true;
+            this.labelCpf.Location = new System.Drawing.Point(232, 74);
+            this.labelCpf.Name = "labelCpf";
+            this.labelCpf.Size = new System.Drawing.Size(27, 13);
+            this.labelCpf.TabIndex = 4;
+            this.labelCpf.Text = "CPF";
             // 
-            // label4
+            // labelNascimento
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(113, 74);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Nascimento";
+            this.labelNascimento.AutoSize = true;
+            this.labelNascimento.Location = new System.Drawing.Point(113, 74);
+            this.labelNascimento.Name = "labelNascimento";
+            this.labelNascimento.Size = new System.Drawing.Size(63, 13);
+            this.labelNascimento.TabIndex = 3;
+            this.labelNascimento.Text = "Nascimento";
             // 
-            // label3
+            // labelSexo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Sexo";
+            this.labelSexo.AutoSize = true;
+            this.labelSexo.Location = new System.Drawing.Point(16, 74);
+            this.labelSexo.Name = "labelSexo";
+            this.labelSexo.Size = new System.Drawing.Size(31, 13);
+            this.labelSexo.TabIndex = 2;
+            this.labelSexo.Text = "Sexo";
             // 
-            // label2
+            // labelNome
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(113, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nome";
+            this.labelNome.AutoSize = true;
+            this.labelNome.Location = new System.Drawing.Point(113, 25);
+            this.labelNome.Name = "labelNome";
+            this.labelNome.Size = new System.Drawing.Size(35, 13);
+            this.labelNome.TabIndex = 1;
+            this.labelNome.Text = "Nome";
             // 
-            // label1
+            // labelMatricula
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Matrícula";
+            this.labelMatricula.AutoSize = true;
+            this.labelMatricula.Location = new System.Drawing.Point(16, 25);
+            this.labelMatricula.Name = "labelMatricula";
+            this.labelMatricula.Size = new System.Drawing.Size(52, 13);
+            this.labelMatricula.TabIndex = 0;
+            this.labelMatricula.Text = "Matrícula";
             // 
             // textBPesquisa
             // 
             this.textBPesquisa.Location = new System.Drawing.Point(12, 145);
+            this.textBPesquisa.MaxLength = 100;
             this.textBPesquisa.Name = "textBPesquisa";
             this.textBPesquisa.ShortcutsEnabled = false;
             this.textBPesquisa.Size = new System.Drawing.Size(456, 20);
@@ -251,11 +248,55 @@ namespace Interface
             this.dgvAluno.RowHeadersVisible = false;
             this.dgvAluno.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAluno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvAluno.Size = new System.Drawing.Size(550, 195);
+            this.dgvAluno.Size = new System.Drawing.Size(550, 221);
             this.dgvAluno.StandardTab = true;
             this.dgvAluno.TabIndex = 0;
             this.dgvAluno.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAluno_CellClick);
             this.dgvAluno.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAluno_CellFormatting);
+            // 
+            // buttonExcluir
+            // 
+            this.buttonExcluir.Enabled = false;
+            this.buttonExcluir.Location = new System.Drawing.Point(93, 398);
+            this.buttonExcluir.Name = "buttonExcluir";
+            this.buttonExcluir.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcluir.TabIndex = 11;
+            this.buttonExcluir.Text = "Excluir";
+            this.buttonExcluir.UseVisualStyleBackColor = true;
+            this.buttonExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // buttonEditar
+            // 
+            this.buttonEditar.Location = new System.Drawing.Point(12, 398);
+            this.buttonEditar.Name = "buttonEditar";
+            this.buttonEditar.Size = new System.Drawing.Size(75, 23);
+            this.buttonEditar.TabIndex = 10;
+            this.buttonEditar.Text = "Editar";
+            this.buttonEditar.UseVisualStyleBackColor = true;
+            this.buttonEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Sexo";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Sexo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Sexo";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Sexo";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // btnSair
+            // 
+            this.btnSair.Location = new System.Drawing.Point(487, 398);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(75, 23);
+            this.btnSair.TabIndex = 12;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // matriculaDataGridViewTextBoxColumn
             // 
@@ -296,56 +337,16 @@ namespace Interface
             this.cpfDataGridViewTextBoxColumn.Name = "cpfDataGridViewTextBoxColumn";
             this.cpfDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // buttonExcluir
+            // acessoFBBindingSource
             // 
-            this.buttonExcluir.Enabled = false;
-            this.buttonExcluir.Location = new System.Drawing.Point(93, 372);
-            this.buttonExcluir.Name = "buttonExcluir";
-            this.buttonExcluir.Size = new System.Drawing.Size(75, 23);
-            this.buttonExcluir.TabIndex = 11;
-            this.buttonExcluir.Text = "Excluir";
-            this.buttonExcluir.UseVisualStyleBackColor = true;
-            this.buttonExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // buttonEditar
-            // 
-            this.buttonEditar.Location = new System.Drawing.Point(12, 369);
-            this.buttonEditar.Name = "buttonEditar";
-            this.buttonEditar.Size = new System.Drawing.Size(75, 23);
-            this.buttonEditar.TabIndex = 10;
-            this.buttonEditar.Text = "Editar";
-            this.buttonEditar.UseVisualStyleBackColor = true;
-            this.buttonEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Sexo";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Sexo";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Sexo";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Sexo";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // btnSair
-            // 
-            this.btnSair.Location = new System.Drawing.Point(487, 372);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(75, 23);
-            this.btnSair.TabIndex = 12;
-            this.btnSair.Text = "Sair";
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            this.acessoFBBindingSource.DataSource = typeof(EM.Repository.AcessoFB);
             // 
             // FormAluno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(574, 404);
+            this.ClientSize = new System.Drawing.Size(574, 428);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.buttonExcluir);
@@ -361,8 +362,8 @@ namespace Interface
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBCadEditAluno.ResumeLayout(false);
             this.groupBCadEditAluno.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.acessoFBBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAluno)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.acessoFBBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,11 +379,11 @@ namespace Interface
         private System.Windows.Forms.TextBox textBNome;
         private System.Windows.Forms.MaskedTextBox maskedTBNascimento;
         private System.Windows.Forms.TextBox textBMatricula;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelCpf;
+        private System.Windows.Forms.Label labelNascimento;
+        private System.Windows.Forms.Label labelSexo;
+        private System.Windows.Forms.Label labelNome;
+        private System.Windows.Forms.Label labelMatricula;
         private System.Windows.Forms.TextBox textBPesquisa;
         private System.Windows.Forms.Button buttonPesquisar;
         private System.Windows.Forms.Button buttonExcluir;
