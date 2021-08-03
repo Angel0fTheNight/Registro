@@ -21,15 +21,16 @@ namespace LoginAluno
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            FormAluno vi = new FormAluno();
+            FormAluno formularioAluno = new FormAluno();
             RepositorioAluno repositorioAluno = new RepositorioAluno();
             try
             {
                 if (repositorioAluno.EntrarNoSistemaComoAluno(txtNome.Text, txtSenha.Text))
                 {
-                    vi.Preenche(txtNome.Text);
                     this.Hide();
-                    vi.ShowDialog();
+                    formularioAluno.Preenche(txtNome.Text);
+                    formularioAluno.EstaEmEdicao = true;                    
+                    formularioAluno.ShowDialog();
                     this.Close();
                 }
             }
@@ -37,6 +38,6 @@ namespace LoginAluno
             {          
                 MessageBox.Show("Aluno não esta registrado!");
             }
-        }      
+        }    
     }
 }

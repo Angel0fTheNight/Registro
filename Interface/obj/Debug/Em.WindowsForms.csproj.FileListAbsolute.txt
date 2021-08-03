@@ -23,3 +23,6 @@ C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\Interface.app
 C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.exe.manifest
 C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.application
 C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.FormAluno.resources
+C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\itextsharp.dll
+C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\itextsharp.xml

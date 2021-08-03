@@ -8,6 +8,11 @@ namespace Interface
 {
     public partial class FormAluno : Form
     {
+        public FormAluno()
+        {
+            InitializeComponent();
+            textBNome.MaxLength = 100;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             PreencheGrid();
@@ -40,7 +45,7 @@ namespace Interface
             PreencheDados((Aluno)aluno.BusqueAlunoPorNome(nome));
         }
         private BindingSource bs = new BindingSource();
-        public void LimpeOsCampos()
+        private void LimpeOsCampos()
         {
             textBCpf.Text = string.Empty;
             textBMatricula.Text = string.Empty;
@@ -50,10 +55,23 @@ namespace Interface
             textBPesquisa.Text = string.Empty;
             dgvAluno.ClearSelection();
         }
-        public void UseApenasNumeros(KeyPressEventArgs e) =>
+        private bool CampoVazio(string campo) =>
+            campo == string.Empty;
+        private void UseApenasNumeros(KeyPressEventArgs e) =>
             e.Handled = (!char.IsDigit(e.KeyChar) && e.KeyChar != 08);
-        public void UseApenasLetras(KeyPressEventArgs e) =>
+        private void UseApenasLetras(KeyPressEventArgs e) =>
             e.Handled = (char.IsDigit(e.KeyChar));
+        private Aluno PreencheAluno()
+        {
+            var aluno = new Aluno();
+            aluno.Matricula = Convert.ToInt32(textBMatricula.Text);
+            aluno.Nome = textBNome.Text.Trim();
+            aluno.Cpf = textBCpf.Text;
+            aluno.Nascimento = Convert.ToDateTime(maskedTBNascimento.Text);
+            aluno.Sexo = (EnumeradorSexo)comboBSexo.SelectedIndex;
+            return aluno;
+            
+        }
         private bool _EstaEmEdicao;
         public bool EstaEmEdicao
         {
@@ -71,50 +89,30 @@ namespace Interface
                 buttonExcluir.Enabled = _EstaEmEdicao;
 
             }
-        }
-        public FormAluno()
-        {
-            InitializeComponent();
-            textBNome.MaxLength = 100;
-        }
+        }       
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if (!Validacao()) { return; }
-            var aluno = new Aluno();
-            aluno.Matricula = Convert.ToInt32(textBMatricula.Text);
-            aluno.Nome = textBNome.Text.Trim();
-            aluno.Cpf = textBCpf.Text;
-            aluno.Nascimento = Convert.ToDateTime(maskedTBNascimento.Text);
-            aluno.Sexo = (EnumeradorSexo)comboBSexo.SelectedIndex;
+            if (!Validacao()) { return; }            
             var dadosAluno = new RepositorioAluno();
-            if (!EstaEmEdicao)
+            try
             {
-                try
+                if (!EstaEmEdicao)
                 {
-                    dadosAluno.AdicioneNovoAluno(aluno);
-                    PreencheGrid();
-                    MessageBox.Show("Aluno inserido com sucesso !", "Sucesso", MessageBoxButtons.OK);
+                    dadosAluno.AdicioneNovoAluno(PreencheAluno());                   
+                    MessageBox.Show("Aluno inserido com sucesso !", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpeOsCampos();
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Erro no cadastro, algum dos campos esta inserido de maneira incorreta!", "Erro", MessageBoxButtons.OK);
+                    dadosAluno.AtualizeAluno(PreencheAluno());                   
+                    MessageBox.Show("Aluno modificado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);                   
                 }
+                PreencheGrid();
+                
             }
-            else
+            catch (Exception)
             {
-                try
-                {
-                    dadosAluno.AtualizeAluno(aluno);
-                    PreencheGrid();
-                    MessageBox.Show("Aluno modificado com sucesso!", "Sucesso", MessageBoxButtons.OK);
-                    LimpeOsCampos();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Erro na modificação, algum dos campos esta inserido de maneira incorreta!", "Erro", MessageBoxButtons.OK);
-                }
-
+                MessageBox.Show("Erro, algum dos campos esta inserido de maneira incorreta!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -129,33 +127,25 @@ namespace Interface
         }
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            RepositorioAluno repositorioAluno = new RepositorioAluno();
-            string resultado = textBPesquisa.Text;
-
-            if (int.TryParse(resultado, out int matricula))
+            try
             {
-                try
+                RepositorioAluno repositorioAluno = new RepositorioAluno();
+                string resultado = textBPesquisa.Text;
+                if (int.TryParse(resultado, out int matricula))
                 {
                     bs.DataSource = repositorioAluno.BusqueAlunosPorMatricula(matricula);
                     dgvAluno.DataSource = bs;
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Erro na consulta!", "Erro", MessageBoxButtons.OK);
-                }
-            }
-            else
-            {
-                var alunos = (List<Aluno>)repositorioAluno.BusqueAlunosPorParteDoNome(resultado);
-                try
-                {
+                    var alunos = (List<Aluno>)repositorioAluno.BusqueAlunosPorParteDoNome(resultado);
                     bs.DataSource = alunos;
                     dgvAluno.DataSource = bs;
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Erro na consulta!", "Erro", MessageBoxButtons.OK);
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erro na consulta!", "Erro", MessageBoxButtons.OK);
             }
         }
         private void btnEditar_Click(object sender, EventArgs e)
@@ -171,20 +161,13 @@ namespace Interface
             {
                 var dadosAlunos = new RepositorioAluno();
                 var aluno = dadosAlunos.BusqueAlunosPorMatricula(Convert.ToInt32(textBMatricula.Text));
-                DialogResult resultado = MessageBox.Show("Tem certeza que deseja excluir esse aluno?", "Excluir aluno", MessageBoxButtons.YesNo);
+                DialogResult resultado = MessageBox.Show("Tem certeza que deseja excluir esse aluno?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (resultado == DialogResult.Yes)
-                {
-                    try
-                    {
-                        dadosAlunos.RemovaAluno(aluno);
-                        PreencheGrid();
-                        MessageBox.Show("Aluno excluído com sucesso !", "Alterar", MessageBoxButtons.OK);
-                        LimpeOsCampos();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK);
-                    }
+                {                    
+                    dadosAlunos.RemovaAluno(aluno);
+                    PreencheGrid();
+                    MessageBox.Show("Aluno excluído com sucesso !", "Alterar", MessageBoxButtons.OK);
+                    LimpeOsCampos();                   
                 }
             }
             catch (Exception)
@@ -214,9 +197,7 @@ namespace Interface
                     var aluno = new Aluno();
                     try
                     {
-                        int codigo = Convert.ToInt32(dgvAluno.Rows[e.RowIndex].Cells[0].Value);
-                        aluno = dadosAlunos.BusqueAlunosPorMatricula(codigo);
-                        textBMatricula.Enabled = false;
+                        aluno = dadosAlunos.BusqueAlunosPorMatricula(Convert.ToInt32(dgvAluno.Rows[e.RowIndex].Cells[0].Value));                       
                     }
                     catch (Exception ex)
                     {
@@ -235,34 +216,26 @@ namespace Interface
             if (CampoVazio(textBPesquisa.Text))
             {
                 PreencheGrid();
-                textBMatricula.Enabled = true;
             }
-            RepositorioAluno repositorioAluno = new RepositorioAluno();
-            string resultado = textBPesquisa.Text;
-            if (int.TryParse(resultado, out int matricula))
+            try
             {
-                try
+                RepositorioAluno repositorioAluno = new RepositorioAluno();
+                string resultado = textBPesquisa.Text;
+                if (int.TryParse(resultado, out int matricula))
                 {
                     bs.DataSource = repositorioAluno.BusqueAlunosPorMatricula(matricula);
                     dgvAluno.DataSource = bs;
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Erro na consulta!", "Erro", MessageBoxButtons.OK);
-                }
-            }
-            else
-            {
-                var alunos = (List<Aluno>)repositorioAluno.BusqueAlunosPorParteDoNome(resultado);
-                try
-                {
+                    var alunos = (List<Aluno>)repositorioAluno.BusqueAlunosPorParteDoNome(resultado);
                     bs.DataSource = alunos;
                     dgvAluno.DataSource = bs;
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Erro na consulta!", "Erro", MessageBoxButtons.OK);
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erro na consulta!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void dgvAluno_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -297,9 +270,7 @@ namespace Interface
                     textBMatricula.Clear();
                 }
             }
-        }
-        public bool CampoVazio(string campo) =>
-            campo == string.Empty;
+        }        
         private void btnSair_Click(object sender, EventArgs e) => Close();
         public bool Validacao() =>
             ProcessoDeValidacao(CampoVazio(textBNome.Text.Trim()), "O campo Nome esta vazio! O campo Nome é um campo obrigatorio!", textBNome) ?
@@ -323,7 +294,7 @@ namespace Interface
             }
             return consistencia;
         }
-        public static void Atencao(string mensagem) =>
+        private static void Atencao(string mensagem) =>
             MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
     }
