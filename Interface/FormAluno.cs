@@ -21,7 +21,7 @@ namespace Interface
         {
             try
             {
-                RepositorioAluno dadosAlunos = new RepositorioAluno();
+                var dadosAlunos = new RepositorioAluno();
                 bs.DataSource = dadosAlunos.BusqueTodosOsAlunos();
                 dgvAluno.DataSource = bs;
                 dgvAluno.ClearSelection();
@@ -41,18 +41,18 @@ namespace Interface
         }
         public void Preenche(string nome)
         {
-            RepositorioAluno aluno = new RepositorioAluno();
+           var aluno = new RepositorioAluno();
             PreencheDados((Aluno)aluno.BusqueAlunoPorNome(nome));
         }
         private BindingSource bs = new BindingSource();
         private void LimpeOsCampos()
         {
-            textBCpf.Text = string.Empty;
-            textBMatricula.Text = string.Empty;
-            textBNome.Text = string.Empty;
-            maskedTBNascimento.Text = string.Empty;
+            textBCpf.Clear();
+            textBMatricula.Clear();
+            textBNome.Clear();
+            maskedTBNascimento.Clear();
             comboBSexo.SelectedIndex = -1;
-            textBPesquisa.Text = string.Empty;
+            textBPesquisa.Clear();
             dgvAluno.ClearSelection();
         }
         private bool CampoVazio(string campo) =>
@@ -129,7 +129,7 @@ namespace Interface
         {
             try
             {
-                RepositorioAluno repositorioAluno = new RepositorioAluno();
+                var repositorioAluno = new RepositorioAluno();
                 string resultado = textBPesquisa.Text;
                 if (int.TryParse(resultado, out int matricula))
                 {
@@ -219,7 +219,7 @@ namespace Interface
             }
             try
             {
-                RepositorioAluno repositorioAluno = new RepositorioAluno();
+                var repositorioAluno = new RepositorioAluno();
                 string resultado = textBPesquisa.Text;
                 if (int.TryParse(resultado, out int matricula))
                 {
@@ -297,5 +297,10 @@ namespace Interface
         private static void Atencao(string mensagem) =>
             MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
+
+        private void textBNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

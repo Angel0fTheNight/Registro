@@ -54,6 +54,7 @@
     <Compile Include="Aluno.cs" />
     <Compile Include="EnumeradorSexo.cs" />
     <Compile Include="IEntidade.cs" />
+    <Compile Include="Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidarCpf.cs" />
   </ItemGroup>

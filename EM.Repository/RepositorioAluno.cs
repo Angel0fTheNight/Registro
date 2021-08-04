@@ -82,7 +82,7 @@ namespace EM.Repository
         }
         public override IEnumerable<Aluno> BusqueTodosOsAlunos()
         {
-            List<Aluno> alunos = new List<Aluno>();
+            var alunos = new List<Aluno>();
             using (FbConnection conexaoFireBird = AcessoFB.GetInstancia().GetConexao())
             {
                 try

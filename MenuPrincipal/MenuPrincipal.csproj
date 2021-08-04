@@ -79,11 +79,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LoginAluno\LoginAluno.csproj">
-      <Project>{62c4e7f1-cd9f-4d1b-9fd1-340e7af96ea4}</Project>
-      <Name>LoginAluno</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

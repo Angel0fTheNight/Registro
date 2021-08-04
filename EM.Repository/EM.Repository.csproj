@@ -52,7 +52,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositorioAbstrato.cs" />
+    <Compile Include="RepositorioAbstratoProfessor.cs" />
     <Compile Include="RepositorioAluno.cs" />
+    <Compile Include="RepositorioProfessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\EM.Domain.csproj">

@@ -139,6 +139,7 @@ namespace Interface
             this.textBNome.ShortcutsEnabled = false;
             this.textBNome.Size = new System.Drawing.Size(421, 20);
             this.textBNome.TabIndex = 2;
+            this.textBNome.TextChanged += new System.EventHandler(this.textBNome_TextChanged);
             this.textBNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNome_KeyPress);
             // 
             // maskedTBNascimento
