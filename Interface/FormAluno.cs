@@ -44,7 +44,7 @@ namespace Interface
            var aluno = new RepositorioAluno();
             PreencheDados((Aluno)aluno.BusqueAlunoPorNome(nome));
         }
-        private BindingSource bs = new BindingSource();
+        private BindingSource bs = new BindingSource();      
         private void LimpeOsCampos()
         {
             textBCpf.Clear();
@@ -118,7 +118,6 @@ namespace Interface
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             LimpeOsCampos();
-
             if (EstaEmEdicao)
             {
                 MessageBox.Show("A edição do aluno foi cancelada");

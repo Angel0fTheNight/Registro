@@ -26,3 +26,5 @@ C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.For
 C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\itextsharp.dll
 C:\Users\Escolar Manager\source\repos\Registro\Interface\bin\Debug\itextsharp.xml
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.FormLogin.resources
+C:\Users\Escolar Manager\source\repos\Registro\Interface\obj\Debug\Interface.FormProfessor.resources

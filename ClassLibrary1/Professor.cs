@@ -10,7 +10,7 @@ namespace EM.Domain
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Materia { get; set; }
+        public EnumeradorMateria Materia { get; set; }
         public int Ponto { get; set; }
         public string Cpf { get; set; }
     }

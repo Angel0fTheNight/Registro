@@ -35,7 +35,6 @@ namespace Interface
             this.buttonAdicionar = new System.Windows.Forms.Button();
             this.buttonLimpar = new System.Windows.Forms.Button();
             this.comboBSexo = new System.Windows.Forms.ComboBox();
-            this.acessoFBBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBCpf = new System.Windows.Forms.TextBox();
             this.textBNome = new System.Windows.Forms.TextBox();
             this.maskedTBNascimento = new System.Windows.Forms.MaskedTextBox();
@@ -48,19 +47,22 @@ namespace Interface
             this.textBPesquisa = new System.Windows.Forms.TextBox();
             this.buttonPesquisar = new System.Windows.Forms.Button();
             this.dgvAluno = new System.Windows.Forms.DataGridView();
-            this.matriculaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sexoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cpfDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonExcluir = new System.Windows.Forms.Button();
             this.buttonEditar = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSair = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.acessoFBBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.matriculaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sexoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cpfDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBCadEditAluno.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.acessoFBBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAluno)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.acessoFBBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBCadEditAluno
@@ -116,10 +118,6 @@ namespace Interface
             this.comboBSexo.Name = "comboBSexo";
             this.comboBSexo.Size = new System.Drawing.Size(88, 21);
             this.comboBSexo.TabIndex = 3;
-            // 
-            // acessoFBBindingSource
-            // 
-            this.acessoFBBindingSource.DataSource = typeof(EM.Repository.AcessoFB);
             // 
             // textBCpf
             // 
@@ -259,45 +257,6 @@ namespace Interface
             this.dgvAluno.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAluno_CellClick);
             this.dgvAluno.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAluno_CellFormatting);
             // 
-            // matriculaDataGridViewTextBoxColumn
-            // 
-            this.matriculaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.matriculaDataGridViewTextBoxColumn.DataPropertyName = "Matricula";
-            this.matriculaDataGridViewTextBoxColumn.HeaderText = "Matricula";
-            this.matriculaDataGridViewTextBoxColumn.Name = "matriculaDataGridViewTextBoxColumn";
-            this.matriculaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.matriculaDataGridViewTextBoxColumn.Width = 75;
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomeDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // sexoDataGridViewTextBoxColumn
-            // 
-            this.sexoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sexoDataGridViewTextBoxColumn.DataPropertyName = "Sexo";
-            this.sexoDataGridViewTextBoxColumn.HeaderText = "Sexo";
-            this.sexoDataGridViewTextBoxColumn.Name = "sexoDataGridViewTextBoxColumn";
-            this.sexoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nascimentoDataGridViewTextBoxColumn
-            // 
-            this.nascimentoDataGridViewTextBoxColumn.DataPropertyName = "Nascimento";
-            this.nascimentoDataGridViewTextBoxColumn.HeaderText = "Nascimento";
-            this.nascimentoDataGridViewTextBoxColumn.Name = "nascimentoDataGridViewTextBoxColumn";
-            this.nascimentoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cpfDataGridViewTextBoxColumn
-            // 
-            this.cpfDataGridViewTextBoxColumn.DataPropertyName = "Cpf";
-            this.cpfDataGridViewTextBoxColumn.HeaderText = "Cpf";
-            this.cpfDataGridViewTextBoxColumn.Name = "cpfDataGridViewTextBoxColumn";
-            this.cpfDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // buttonExcluir
             // 
             this.buttonExcluir.Enabled = false;
@@ -342,6 +301,64 @@ namespace Interface
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Sexo";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Sexo";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Sexo";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Sexo";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // acessoFBBindingSource
+            // 
+            this.acessoFBBindingSource.DataSource = typeof(EM.Repository.AcessoFB);
+            // 
+            // matriculaDataGridViewTextBoxColumn
+            // 
+            this.matriculaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.matriculaDataGridViewTextBoxColumn.DataPropertyName = "Matricula";
+            this.matriculaDataGridViewTextBoxColumn.HeaderText = "Matricula";
+            this.matriculaDataGridViewTextBoxColumn.Name = "matriculaDataGridViewTextBoxColumn";
+            this.matriculaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sexoDataGridViewTextBoxColumn
+            // 
+            this.sexoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sexoDataGridViewTextBoxColumn.DataPropertyName = "Sexo";
+            this.sexoDataGridViewTextBoxColumn.HeaderText = "Sexo";
+            this.sexoDataGridViewTextBoxColumn.Name = "sexoDataGridViewTextBoxColumn";
+            this.sexoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nascimentoDataGridViewTextBoxColumn
+            // 
+            this.nascimentoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nascimentoDataGridViewTextBoxColumn.DataPropertyName = "Nascimento";
+            this.nascimentoDataGridViewTextBoxColumn.HeaderText = "Nascimento";
+            this.nascimentoDataGridViewTextBoxColumn.Name = "nascimentoDataGridViewTextBoxColumn";
+            this.nascimentoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cpfDataGridViewTextBoxColumn
+            // 
+            this.cpfDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cpfDataGridViewTextBoxColumn.DataPropertyName = "Cpf";
+            this.cpfDataGridViewTextBoxColumn.HeaderText = "Cpf";
+            this.cpfDataGridViewTextBoxColumn.Name = "cpfDataGridViewTextBoxColumn";
+            this.cpfDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // FormAluno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,8 +380,8 @@ namespace Interface
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBCadEditAluno.ResumeLayout(false);
             this.groupBCadEditAluno.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.acessoFBBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAluno)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.acessoFBBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,13 +409,15 @@ namespace Interface
         private System.Windows.Forms.BindingSource acessoFBBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Button btnSair;
+        public System.Windows.Forms.DataGridView dgvAluno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn matriculaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sexoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cpfDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnSair;
-        public System.Windows.Forms.DataGridView dgvAluno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }
 

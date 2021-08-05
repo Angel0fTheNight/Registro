@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aluno.cs" />
+    <Compile Include="EnumeradorMateria.cs" />
     <Compile Include="EnumeradorSexo.cs" />
     <Compile Include="IEntidade.cs" />
     <Compile Include="Professor.cs" />

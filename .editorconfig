@@ -2,3 +2,6 @@
 
 # CS0252: Possible unintended reference comparison; left hand side needs cast
 dotnet_diagnostic.CS0252.severity = silent
+
+# IDE0022: Use block body for methods
+csharp_style_expression_bodied_methods = false

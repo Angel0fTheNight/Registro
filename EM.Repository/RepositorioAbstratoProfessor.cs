@@ -32,10 +32,5 @@ namespace EM.Repository
         {
             return null;
         }
-
-        internal IEnumerable<Professor> Get(Expression<Func<Aluno, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

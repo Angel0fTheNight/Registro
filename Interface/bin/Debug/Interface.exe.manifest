@@ -54,26 +54,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EM.Domain.dll" size="7168">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EM.Domain.dll" size="8192">
       <assemblyIdentity name="EM.Domain" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LYqxU84VyuU6mIQH6oEsZT0N70WejoFG42UjUfNgq6w=</dsig:DigestValue>
+        <dsig:DigestValue>x+Ir1xGQPOcs7su29fcR7rsKOl7QzlMxCC0bSBSvF6Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EM.Repository.dll" size="11264">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EM.Repository.dll" size="13824">
       <assemblyIdentity name="EM.Repository" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Aq47Txv0uFWTAuF1d4aHHu/r2JnxQd1qtc/J5OMnyUA=</dsig:DigestValue>
+        <dsig:DigestValue>P7xBpVWGbEv4Y+qON1QYpNOo0pncdcFvaURTkW8k58s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,14 +90,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interface.exe" size="4220952">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interface.exe" size="4229144">
       <assemblyIdentity name="Interface" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZBKg/+YfXfJTHslBr1sdH1GrBb8c4bDJFUgsiXlTNuA=</dsig:DigestValue>
+        <dsig:DigestValue>8bTaLkh0DItxOjo3AL2MlZD6U2/F/sAACR01raXmyEA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

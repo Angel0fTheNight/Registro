@@ -1,5 +1,4 @@
-﻿using EM.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,25 +16,18 @@ namespace Interface
         {
             InitializeComponent();
         }
-        private void btnLogin_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            var formularioAluno = new FormAluno();
-            var repositorioAluno = new RepositorioAluno();
-            try
-            {
-                if (repositorioAluno.EntrarNoSistemaComoAluno(txtNome.Text, txtSenha.Text))
-                {
-                    this.Hide();
-                    formularioAluno.Preenche(txtNome.Text);
-                    formularioAluno.EstaEmEdicao = true;
-                    formularioAluno.ShowDialog();
-                    this.Close();
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Aluno não esta registrado!");
-            }
+            var aluno = new FormAluno();
+            aluno.ShowDialog();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var professor = new FormProfessor();
+            professor.ShowDialog();
         }
     }
 }
